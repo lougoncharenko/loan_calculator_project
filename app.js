@@ -30,8 +30,33 @@ if(isFinite(monthly)){
     totalInterest.value= ((monthly*calculatedPayments)-principal).toFixed(2);
 
 }else {
-    alert("please check your numbers")
+    //alert("please check your numbers")
+    showError('Please Check your Numbers!!!')
 }
 
 }
+
+
+//show error
+function showError(error){
+    //create a div
+    const errorDiv= document.createElement('div')
+    //get elements
+    const card=document.querySelector('.card');
+    const heading=document.querySelector('.heading');
+    //add class
+    errorDiv.className= 'alert';
+     //create text node and append to div
+    errorDiv.appendChild(document.createTextNode(error));
+    //insert error above heading
+    card.insertBefore(errorDiv, heading);
+    //clear error after 3 seconds
+    setTimeout(clearError, 3000);
+}
+
+//clearError after 3 seconds function
+function clearError(){
+    document.querySelector('.alert').remove();
+}
+
 
